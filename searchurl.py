@@ -13,8 +13,4 @@ def search_url(cname):
                 c_url =  r['href'].strip("http://")
                 c_url = "http://" +  c_url
                 return c_url  
-            else:
-                return        
-    else:
-        return
     
