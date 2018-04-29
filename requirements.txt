@@ -1,0 +1,5 @@
+flask==0.12.2
+BeautifulSoup==4.6.0
+apscheduler==3.5.0
+python==3.6.4
+pymongo==3.6.1

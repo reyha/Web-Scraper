@@ -1,0 +1,75 @@
+<html>
+    <head>
+      <title> Scraped Data </title>
+    </head>
+<body>
+    {% if bse_entries[0] %}
+    <b><big>BSE Data :</big></b>
+    <table cellspacing = "10">
+        <tr id="row">
+            <th class="bse_date">Date </th>
+            <th class="bse_time">Time </th>
+            <th class="bse_current_price">Current Price </th>
+            <th class="bse_abs_price">Absolute Price </th>
+            <th class="bse_per">Percentage inc/dec</th>
+            <th class="bse_volume">Volume</th>
+            <th class="bse_prev_close">Previous Close</th>
+            <th class="bse_open_price">Open Price</th>
+            <th class="bse_bid_price">Bid Price</th>
+            <th class="bse_offer_price">Offer Price</th>
+        </tr>
+    {% for entry in bse_entries %}
+        <tr class="datas">
+            <td class="bse_date">{{  entry["BSE Date"] }}</td>
+            <td class="bse_time">{{  entry["BSE Time"] }}</td>
+            <td class="bse_current_price">{{  entry["BSE Current Price"] }}</td>
+            <td class="bse_abs_price">{{  entry["BSE absolute price"] }}</td>
+            <td class="bse_per">{{  entry["BSE percentage"] }}</td>
+            <td class="bse_volume">{{  entry["BSE Volume"] }}</td>
+            <td class="bse_prev_close">{{  entry["BSE Prev close"] }}</td>
+            <td class="bse_open_price">{{  entry["BSE Open price"] }}</td>
+            <td class="bse_bid_price">{{  entry["BSE bid price"] }}</td>
+            <td class="bse_offer_price">{{  entry["BSE offer price"] }}</td>            
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+        <h4>No company is listed under BSE!!</h4>
+    {% endif %}    
+    
+    <hr/>
+    {% if nse_entries[0] %}
+    <b><big>NSE Data :</big></b>
+    <table cellspacing = "10">
+        <tr id="row">
+            <th class="nse_date">Date</th>
+            <th class="nse_time">Time</th>
+            <th class="nse_current_price">Current Price</th>
+            <th class="nse_abs_price">Absolute Price</th>
+            <th class="nse_per">Percentage inc/dec</th>
+            <th class="nse_volume">Volume</th>
+            <th class="nse_prev_close">Previous Close</th>
+            <th class="nse_open_price">Open Price</th>
+            <th class="nse_bid_price">Bid Price</th>
+            <th class="nse_offer_price">Offer Price</th>
+        </tr>
+    {% for entry in nse_entries %}
+        <tr class="datas">
+            <td class="nse_date">{{ entry["NSE Date"] }}</td>
+            <td class="nse_time">{{ entry["NSE Time"] }}</td>
+            <td class="nse_current_price">{{ entry["NSE Current Price"] }}</td>
+            <td class="nse_abs_price">{{ entry["NSE absolute price"] }}</td>
+            <td class="nse_per">{{ entry["NSE percentage"] }}</td>
+            <td class="nse_volume">{{ entry["NSE Volume"] }}</td>
+            <td class="nse_prev_close">{{ entry["NSE Prev close"] }}</td>
+            <td class="nse_open_price">{{ entry["NSE Open price"] }}</td>
+            <td class="nse_bid_price">{{ entry["NSE bid price"] }}</td>
+            <td class="nse_offer_price">{{ entry["NSE offer price"] }}</td>        
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+        <h4>No company is listed under NSE!!</h4>
+    {% endif %}
+</body>
+</html>
