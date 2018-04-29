@@ -27,7 +27,8 @@ def main():
         app.config['frequency'] = frequency
         app.config['start_time'] = start_time
         app.config['end_time'] = end_time
-        print(app.config.get('frequency'))
+
+        // Job scheduling
         if app.config.get('frequency'):
             trigger = OrTrigger([
                 CronTrigger(hour= app.config.get('start_time')+ '-' + app.config.get('end_time'), minute=app.config.get('frequency'))
