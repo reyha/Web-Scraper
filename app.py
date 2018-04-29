@@ -24,16 +24,9 @@ def main():
         start_time = request.form ['stime']
         end_time = request.form ['etime']
         
-        app.config['frequency'] = frequency
-        app.config['start_time'] = start_time
-        app.config['end_time'] = end_time
-
         # Job scheduling
-        if app.config.get('frequency'):
-            trigger = OrTrigger([
-                CronTrigger(hour= app.config.get('start_time')+ '-' + app.config.get('end_time'), \
-                            minute=app.config.get('frequency'))
-             ])
+        if frequency:
+            trigger = OrTrigger([ CronTrigger(hour= start_time+ '-' + end_time, minute=frequency) ])
             scheduler.add_job(main, trigger)
 
         company_url = search_url(company_name)
