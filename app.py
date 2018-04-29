@@ -25,7 +25,7 @@ def main():
         end_time = request.form ['etime']
         
         # Job scheduling
-        if frequency:
+        if frequency and start_time and end_time:
             trigger = OrTrigger([ CronTrigger(hour= start_time+ '-' + end_time, minute=frequency) ])
             scheduler.add_job(main, trigger)
 
