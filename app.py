@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # DB config
 app.config['MONGO_DBNAME'] = 'connect_to_mongo'
-app.config['MONGO_URI'] = 'mongodb://pretty:' + urllib.parse.quote('RIrey@1965') + '@ds261429.mlab.com:61429/connect_to_mongo'
+app.config['MONGO_URI'] = 'mongodb://{username}:' + urllib.parse.quote({password}) + '{db_url}/connect_to_mongo'
 mongo = PyMongo(app)
 
 @app.route('/', methods = ['GET','POST'])
