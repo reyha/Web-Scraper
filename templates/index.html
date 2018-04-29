@@ -3,17 +3,15 @@
  
 <head>
     <title> My Web Scraper </title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
 </head>
  
 <body>
- 
-    <div class="container">
-	<div class = "header">
+    <div>
+	<div>
 	    <h3> Python Web Scraper </h3>
         </div>            
-	<div class="row marketing">
-            <div class="col-lg-6">
+	<div>
+            <div>
                 <form method="POST" action='/'>
                 <label> Enter company name:   <label> <input type="text" name="cname"><br>
                 <label> Enter job frequency:  </label> <input type="text" name="freq"><br>
@@ -21,9 +19,9 @@
                 <label> Enter job end time: </label> <input type="text" name="etime"><br><br>
                 <input type="submit" value="Submit">
                 </form> <br><br>
-               {% if error %}
+                {% if error %}
                    {{ error }} 
-               {% endif %}
+                {% endif %}
     	    </div>
         </div>
     </div> 
