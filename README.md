@@ -1,6 +1,6 @@
 # WEB SCRAPER  
  
-Python Web Scraper made using Flask framework and MongoDB  
+Python Web Scraper made using Flask framework, MongoDB and APScheduler   
 
 **To use**
 
