@@ -10,7 +10,6 @@ def search_url(cname):
         results = search_results.findAll('a',href=True)
         for r in results:
             if cname.lower() in r.text.lower():
-                c_url =  r['href'].strip("http://")
-                c_url = "http://" +  c_url
+                c_url =  r['href']
                 return c_url  
     
