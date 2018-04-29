@@ -31,7 +31,8 @@ def main():
         # Job scheduling
         if app.config.get('frequency'):
             trigger = OrTrigger([
-                CronTrigger(hour= app.config.get('start_time')+ '-' + app.config.get('end_time'), minute=app.config.get('frequency'))
+                CronTrigger(hour= app.config.get('start_time')+ '-' + app.config.get('end_time'), \
+                            minute=app.config.get('frequency'))
              ])
             scheduler.add_job(main, trigger)
 
@@ -48,13 +49,17 @@ def main():
             nse_db = mongo.db.nse
 
             if b:
-                bse_entry = bse_db.insert({'BSE Date': b['bse_date'], 'BSE Time':b['bse_time'], 'BSE Current Price':b['bse_current_price'], 'BSE absolute price':b['bse_abs_price'], 'BSE percentage':
-                           b['bse_per'], 'BSE Volume': b['bse_volume'], 'BSE Prev close':b['bse_prev_close'], 'BSE Open price':b['bse_open_price'], 'BSE bid price': b['bse_bid_price'],
-                           'BSE offer price': b['bse_offer_price']})
+                bse_entry = bse_db.insert({'BSE Date': b['bse_date'], 'BSE Time': b['bse_time'], \
+                            'BSE Current Price': b['bse_current_price'], 'BSE absolute price': b['bse_abs_price'],\
+                            'BSE percentage': b['bse_per'], 'BSE Volume': b['bse_volume'], \
+                            'BSE Prev close': b['bse_prev_close'], 'BSE Open price': b['bse_open_price'],\
+                            'BSE bid price': b['bse_bid_price'], 'BSE offer price': b['bse_offer_price']})
             if n:
-                nse_entry = nse_db.insert({'NSE Date': n['nse_date'], 'NSE Time':n['nse_time'], 'NSE Current Price': n['nse_current_price'], 'NSE absolute price':n['nse_abs_price'], 'NSE percentage':
-                           n['nse_per'], 'NSE Volume': n['nse_volume'], 'NSE Prev close':n['nse_prev_close'], 'NSE Open price':n['nse_open_price'], 'NSE bid price': n['nse_bid_price'],
-                          'NSE offer price': n['nse_offer_price']})
+                nse_entry = nse_db.insert({'NSE Date': n['nse_date'], 'NSE Time':n['nse_time'], \
+                           'NSE Current Price': n['nse_current_price'], 'NSE absolute price': n['nse_abs_price'], \
+                           'NSE percentage': n['nse_per'], 'NSE Volume': n['nse_volume'], \
+                           'NSE Prev close': n['nse_prev_close'], 'NSE Open price': n['nse_open_price'], \
+                           'NSE bid price': n['nse_bid_price'], 'NSE offer price': n['nse_offer_price']})
 
             if bse_db or nse_db:
                 return redirect(url_for('info'))
