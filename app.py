@@ -23,13 +23,8 @@ def main():
         frequency = request.form ['freq']
         start_time = request.form ['stime']
         end_time = request.form ['etime']
-        
-        # Job scheduling
-        if frequency and start_time and end_time:
-            trigger = OrTrigger([ CronTrigger(hour= start_time+ '-' + end_time, minute=frequency) ])
-            scheduler.add_job(main, trigger)
-
         company_url = search_url(company_name)
+        
         if company_url:
             c_url = requests.get(company_url)
             soup = BS(c_url.text, "html.parser")
@@ -54,13 +49,24 @@ def main():
                            'NSE Prev close': n['nse_prev_close'], 'NSE Open price': n['nse_open_price'], \
                            'NSE bid price': n['nse_bid_price'], 'NSE offer price': n['nse_offer_price']})
 
+            # Job scheduling
+            if frequency and start_time and end_time:
+ 
+                # Check to ensure start time is before end time
+                if start_time < end_time:
+                    trigger = OrTrigger([ CronTrigger(hour= start_time+ '-' + end_time, minute=frequency) ])
+                    scheduler.add_job(main, trigger)
+                else:
+                    error = "End time should be after start time"
+                    return render_template('index.html', error = error)
+            
             if bse_db or nse_db:
                 return redirect(url_for('info'))
-
+        
         else: 
             error = "Sorry! Company not found."
             return render_template('index.html', error = error)
-       
+
     return render_template('index.html')
 
 @app.route("/info")

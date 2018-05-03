@@ -4,13 +4,17 @@ Python Web Scraper made using Flask framework, MongoDB and APScheduler
 
 **To use**
 
-- python app.py
+- run `python app.py`
 - Navigate to `localhost:5000`
 
 **To install**
 
 - clone repo
  
+**To run tests**
+
+- run `python -m unittest -v test_file.Testing`
+
 ## Screenshot
 
 ### Home Page

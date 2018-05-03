@@ -13,10 +13,10 @@
 	<div>
             <div>
                 <form method="POST" action='/'>
-                <label> Enter company name:   <label> <input type="text" name="cname"><br>
-                <label> Enter job frequency:  </label> <input type="text" name="freq"><br>
-                <label> Enter job start time: </label> <input type="text" name="stime"><br>
-                <label> Enter job end time: </label> <input type="text" name="etime"><br><br>
+                <label> Enter the name of the company you want to fetch data for:   <label> <input type="text" name="cname"><br><br>
+                <label> After many minutes do you want your company's data to be fetched?  </label> <input type="text" name="freq"><br><br>
+                <label> At what time do you want to start fetching data? (in 24 hour clock format) </label> <input type="text" name="stime"> <br><label> We don't support minutes/seconds as input currently </label> <br><br>
+                <label> At what time do you want to stop fetching data? (in 24 hour clock format) </label> <input type="text" name="etime"><br> <label> We don't support minutes/seconds as input currently</label><br><br>
                 <input type="submit" value="Submit">
                 </form> <br><br>
                 {% if error %}

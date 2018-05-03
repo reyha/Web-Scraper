@@ -1,15 +1,12 @@
 from bs4 import BeautifulSoup as BS
 import requests
-
+import json
 def search_url(cname):
-    base_url = 'http://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php?search_data=&cid=&mbsearch_str=&topsearch_type=1&search_str=' + cname
-    company_url = requests.get(base_url)
-    soup = BS(company_url.text, "html.parser")
-    search_results = soup.find('table', {"class":"srch_tbl"})
-    if search_results:
-        results = search_results.findAll('a',href=True)
-        for r in results:
-            if cname.lower() in r.text.lower():
-                c_url =  r['href']
-                return c_url  
+    base_url = 'https://www.moneycontrol.com/mccode/common/autosuggesion.php?query=' + cname + '&type=1&format=json&callback=suggest1'
+    response = requests.get(base_url)
+    link = json.loads(response.text[9:-1])[0]['link_src']
+    if link == "javascript:void(0)":
+        return None
+    else:
+        return link
     
